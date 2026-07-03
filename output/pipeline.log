@@ -1,0 +1,5 @@
+2026-07-02 21:04:00,235 | INFO | src.core.data_loader | Loading market data from D:\KOLADILIP K\7th Sem\Internship\FalseBreakoutDetection\data\market_data_1m.csv
+2026-07-02 21:04:03,220 | INFO | src.core.data_loader | Loaded 999353 cleaned rows
+2026-07-02 21:04:03,346 | INFO | src.core.pipeline | Processing timeframe 15min
+2026-07-02 21:09:42,521 | INFO | src.core.pipeline | Processing timeframe 1h
+2026-07-02 21:17:02,141 | INFO | src.core.pipeline | Exported 326 zones, 10105 signals, and dashboard to D:\KOLADILIP K\7th Sem\Internship\FalseBreakoutDetection\output\dashboard.html

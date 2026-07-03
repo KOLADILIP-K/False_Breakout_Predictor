@@ -1,0 +1,69 @@
+data:
+  input_path: data/market_data_1m.csv
+  datetime_column: datetime
+  timezone: Asia/Kolkata
+  required_columns: [datetime, open, high, low, close, volume, oi]
+  duplicate_policy: last
+
+resampling:
+  base_timeframe: 1min
+  timeframes:
+    - name: 15min
+      rule: 15min
+      weight: 0.65
+    - name: 1h
+      rule: 1h
+      weight: 1.0
+
+swing:
+  lookback: 3
+  atr_period: 14
+  atr_multiplier: 0.35
+  min_distance_bars: 3
+
+zones:
+  dbscan_eps_atr_multiplier: 0.75
+  dbscan_min_samples: 2
+  max_zone_width_atr: 2.5
+  merge_overlap_ratio: 0.4
+
+trendlines:
+  min_points: 3
+  max_lines: 12
+  regression_window: 120
+  touch_tolerance_atr: 0.8
+
+confidence:
+  threshold: 62.0
+  weights:
+    touch_count: 0.20
+    relative_volume: 0.15
+    timeframe: 0.15
+    trend_strength: 0.15
+    reversal_strength: 0.15
+    recency: 0.10
+    zone_width: 0.10
+
+breakout:
+  lookahead_candles: 8
+  breakout_buffer_atr: 0.15
+  low_volume_ratio: 0.90
+  reversal_volume_ratio: 1.25
+  rolling_volume_window: 20
+  trendline_tolerance_atr: 0.7
+
+backtest:
+  max_holding_bars: 20
+  target_atr: 1.0
+  stop_atr: 0.75
+
+visualization:
+  title: False Breakout Detection Dashboard
+  output_html: output/dashboard.html
+  output_signals_csv: output/signals.csv
+  output_zones_csv: output/zones.csv
+  max_candles: 2500
+
+logging:
+  level: INFO
+  file: output/pipeline.log
